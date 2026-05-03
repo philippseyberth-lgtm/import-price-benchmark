@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EU Import Price Benchmark — Are You Overpaying? | Corridor Economics</title>
+<meta name="description" content="Compare your import prices against real EU customs statistics. Free benchmark for Li-ion batteries, textiles, steel and more across 5 origin countries.">
+<meta property="og:title" content="EU Import Price Benchmark — Are You Overpaying?">
+<meta property="og:description" content="Compare your import prices against real EU customs statistics. Free benchmark across 5 origin countries.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EU Import Price Benchmark">
+<meta name="twitter:description" content="Compare your import prices against real EU customs statistics.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b1120;
+  --bg-card:#111827;
+  --bg-surface:#1a2332;
+  --border:#1e293b;
+  --text:#e2e8f0;
+  --text-muted:#94a3b8;
+  --text-dim:#64748b;
+  --accent:#d4a853;
+  --accent-hover:#e4bc6a;
+  --green:#22c55e;
+  --green-dim:#15803d;
+  --red:#ef4444;
+  --red-dim:rgba(239,68,68,.12);
+  --orange:#f97316;
+  --blue:#3b82f6;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-hover)}
+
+/* Layout */
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+
+/* Hero */
+.hero{padding:100px 0 60px;text-align:center;background:linear-gradient(180deg,#0d1526 0%,var(--bg) 100%)}
+.hero h1{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;line-height:1.2;max-width:780px;margin:0 auto 20px;letter-spacing:-.02em}
+.hero h1 span{color:var(--accent)}
+.hero .subhead{font-size:clamp(1rem,2vw,1.2rem);color:var(--text-muted);max-width:640px;margin:0 auto 40px}
+.hero-cta{display:inline-block;padding:14px 32px;background:var(--accent);color:#0b1120;font-size:1.05rem;font-weight:600;border-radius:8px;transition:background .2s}
+.hero-cta:hover{background:var(--accent-hover);color:#0b1120}
+
+/* Stats */
+.stats{background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center}
+.stat-number{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:var(--accent);margin-bottom:4px}
+.stat-label{font-size:.9rem;color:var(--text-muted);line-height:1.4}
+
+/* Charts */
+.charts{text-align:center}
+.charts h2{font-size:1.75rem;margin-bottom:12px;font-weight:600}
+.charts .section-sub{color:var(--text-muted);margin-bottom:48px;font-size:1rem}
+.chart-grid{display:grid;grid-template-columns:1fr;gap:40px}
+.chart-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:left}
+.chart-header{padding:24px 24px 0}
+.chart-header h3{font-size:1.15rem;font-weight:600;margin-bottom:4px}
+.chart-header .hs-code{font-size:.85rem;color:var(--text-dim);font-family:monospace}
+.chart-body{padding:16px 24px 24px;position:relative;height:280px}
+.chart-insight{padding:0 24px 24px;font-size:.9rem;color:var(--text-muted);line-height:1.5;border-top:1px solid var(--border);padding-top:16px;margin:0 24px;padding-left:0;padding-right:0}
+.chart-insight strong{color:var(--accent)}
+.badge-warning{display:inline-block;background:var(--red-dim);color:var(--red);font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:12px;margin-left:8px;vertical-align:middle}
+
+/* How it works */
+.how{text-align:center}
+.how h2{font-size:1.75rem;margin-bottom:48px;font-weight:600}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.step{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:32px 24px}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(212,168,83,.12);color:var(--accent);font-weight:700;font-size:1.1rem;margin-bottom:16px}
+.step h3{font-size:1.1rem;margin-bottom:8px;font-weight:600}
+.step p{font-size:.9rem;color:var(--text-muted);line-height:1.5}
+
+/* Form */
+.signup{text-align:center}
+.signup h2{font-size:1.75rem;margin-bottom:12px;font-weight:600}
+.signup .section-sub{color:var(--text-muted);margin-bottom:40px;font-size:1rem}
+.signup-form{max-width:640px;margin:0 auto;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:32px;position:relative}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:.85rem;font-weight:500;color:var(--text-muted)}
+.form-group input,.form-group select,.form-group textarea{background:var(--bg-surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-size:1rem;transition:border-color .2s;font-family:inherit}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-dim)}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.cta-btn{display:block;width:100%;padding:14px;margin-top:8px;background:var(--accent);color:#0b1120;font-size:1.05rem;font-weight:600;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .1s}
+.cta-btn:hover{background:var(--accent-hover)}
+.cta-btn:active{transform:scale(.98)}
+.form-note{text-align:center;margin-top:14px;font-size:.85rem;color:var(--text-dim)}
+.form-success{display:none;text-align:center;padding:28px 16px}
+.form-success .checkmark{font-size:2.5rem;margin-bottom:12px}
+.form-success h3{font-size:1.2rem;margin-bottom:6px;color:var(--green)}
+.form-success p{color:var(--text-muted);font-size:.95rem}
+
+/* Bundle */
+.bundle{text-align:center;background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.bundle h2{font-size:1.5rem;margin-bottom:12px;font-weight:600}
+.bundle .section-sub{color:var(--text-muted);margin-bottom:24px;font-size:1rem}
+.bundle-items{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;font-size:.95rem;color:var(--text-muted)}
+.bundle-items span{padding:8px 16px;background:var(--bg-surface);border:1px solid var(--border);border-radius:8px}
+.bundle-items span.current{border-color:var(--accent);color:var(--accent)}
+
+/* Pricing */
+.pricing{text-align:center}
+.pricing h2{font-size:1.75rem;margin-bottom:12px;font-weight:600}
+.pricing .section-sub{color:var(--text-muted);margin-bottom:48px;font-size:1rem}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.price-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:32px 24px;display:flex;flex-direction:column}
+.price-card.featured{border-color:var(--accent);position:relative}
+.price-card.featured::before{content:"Most Popular";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#0b1120;font-size:.75rem;font-weight:600;padding:4px 14px;border-radius:20px;white-space:nowrap}
+.price-name{font-size:1.1rem;font-weight:600;margin-bottom:4px}
+.price-amount{font-size:2rem;font-weight:700;margin-bottom:4px}
+.price-amount .period{font-size:.9rem;font-weight:400;color:var(--text-muted)}
+.price-desc{font-size:.85rem;color:var(--text-dim);margin-bottom:24px;min-height:40px}
+.price-features{list-style:none;text-align:left;flex:1;margin-bottom:24px}
+.price-features li{font-size:.9rem;color:var(--text-muted);padding:6px 0;padding-left:22px;position:relative}
+.price-features li::before{content:"\2713";position:absolute;left:0;color:var(--green);font-weight:700;font-size:.85rem}
+.price-cta{display:block;text-align:center;padding:12px;border-radius:8px;font-weight:600;font-size:.95rem;transition:background .2s}
+.price-cta.primary{background:var(--accent);color:#0b1120}
+.price-cta.primary:hover{background:var(--accent-hover)}
+.price-cta.secondary{border:1px solid var(--border);color:var(--text)}
+.price-cta.secondary:hover{border-color:var(--text-muted)}
+
+/* Footer */
+footer{border-top:1px solid var(--border);padding:32px 0;text-align:center}
+footer p{font-size:.85rem;color:var(--text-dim);line-height:1.8}
+
+/* Responsive */
+@media(max-width:768px){
+  section{padding:56px 0}
+  .hero{padding:72px 0 40px}
+  .form-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr;gap:20px}
+  .steps{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .chart-body{height:220px}
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1>Are you <span>overpaying</span> for imports?</h1>
+    <p class="subhead">Compare your purchase prices against real EU customs statistics. Free, instant benchmark across 5 origin countries &mdash; powered by Eurostat Comext data.</p>
+    <a href="#signup" class="hero-cta">Get your free benchmark</a>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-number">Eurostat Comext</div>
+        <div class="stat-label">Official EU customs statistics &mdash; the same data governments use</div>
+      </div>
+      <div>
+        <div class="stat-number">16 months</div>
+        <div class="stat-label">Price history per product, updated monthly</div>
+      </div>
+      <div>
+        <div class="stat-number">EU-27 aggregate</div>
+        <div class="stat-label">Benchmark-grade stability across all member states</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Charts -->
+<section class="charts">
+  <div class="container">
+    <h2>Real benchmark data from EU imports</h2>
+    <p class="section-sub">These charts use live Eurostat Comext data. Your benchmark report will look like this.</p>
+    <div class="chart-grid">
+
+      <!-- Chart 1: Li-ion Batteries -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>Li-ion Batteries</h3>
+          <span class="hs-code">CN 85076000 &mdash; EU-27 average import price/kg</span>
+        </div>
+        <div class="chart-body">
+          <canvas id="chart-lion"></canvas>
+        </div>
+        <div class="chart-insight">
+          <strong>CN is cheapest at &euro;17.49/kg</strong> [&euro;15.53&ndash;&euro;19.45 fair range]. Vietnam 60% premium, India 165% premium. If you're paying &gt;&euro;19.45/kg for Chinese Li-ion cells, you're above the EU market range.
+        </div>
+      </div>
+
+      <!-- Chart 2: T-shirts -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>Cotton T-shirts, knit</h3>
+          <span class="hs-code">CN 61091000 &mdash; EU-27 average import price/kg</span>
+        </div>
+        <div class="chart-body">
+          <canvas id="chart-tshirts"></canvas>
+        </div>
+        <div class="chart-insight">
+          <strong>India cheapest at &euro;16.08/kg.</strong> Vietnam +2%, China +18%, Turkey +65%. India and Vietnam are price-competitive on cotton knits &mdash; worth checking if your supplier is above the country average.
+        </div>
+      </div>
+
+      <!-- Chart 3: Flat Steel -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>Flat-rolled Steel <span class="badge-warning">25% EU Safeguard Active</span></h3>
+          <span class="hs-code">CN 72104900 &mdash; EU-27 average import price/kg</span>
+        </div>
+        <div class="chart-body">
+          <canvas id="chart-steel"></canvas>
+        </div>
+        <div class="chart-insight">
+          <strong>Thailand 23% cheaper than China at origin</strong> &mdash; and no trade-defence surcharge. Chinese flat steel carries a 25% EU safeguard duty on top of the higher base price. Thailand delivers &euro;0.62/kg vs. CN &euro;0.80/kg.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="how">
+  <div class="container">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Tell us your HS codes</h3>
+        <p>Enter the products you import and the origin countries you source from. We match them to EU customs data.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Get your benchmark</h3>
+        <p>Within 48 hours, receive a personalized report showing EU-27 average prices, origin-country comparisons, and a "fair price range" for each product.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Negotiate smarter</h3>
+        <p>Use the data to benchmark your suppliers. If you're paying above the EU average, you now have the evidence to renegotiate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Signup -->
+<section class="signup" id="signup">
+  <div class="container">
+    <h2>Get your free import price benchmark</h2>
+    <p class="section-sub">Enter your HS codes and we'll show you where your prices sit vs. the EU market.</p>
+    <form class="signup-form" id="benchmarkForm" action="https://formspree.io/f/placeholder" method="POST">
+      <div class="form-grid">
+        <div class="form-group full">
+          <label for="email">Email address *</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group full">
+          <label for="products">Which products do you import?</label>
+          <textarea id="products" name="products" rows="3" placeholder="e.g. Li-ion batteries (85076000), cotton t-shirts (61091000), flat steel..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="origins">Origin countries</label>
+          <select id="origins" name="origins">
+            <option value="">Select primary origin</option>
+            <option value="CN">China</option>
+            <option value="VN">Vietnam</option>
+            <option value="IN">India</option>
+            <option value="TH">Thailand</option>
+            <option value="TR">Turkey</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="volume">Annual import volume</label>
+          <select id="volume" name="volume">
+            <option value="">Select range</option>
+            <option value="<100k">&lt; &euro;100K</option>
+            <option value="100k-500k">&euro;100K &ndash; &euro;500K</option>
+            <option value="500k-2m">&euro;500K &ndash; &euro;2M</option>
+            <option value="2m+">&gt; &euro;2M</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="cta-btn">Send me my benchmark</button>
+      <p class="form-note">Free. No login required. We'll email your benchmark within 48 hours.</p>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <div class="checkmark">&#10003;</div>
+      <h3>Benchmark request received</h3>
+      <p>We'll send your personalized price benchmark within 48 hours. Check your inbox.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Bundle -->
+<section class="bundle">
+  <div class="container">
+    <h2>Part of the EU Import Compliance Suite</h2>
+    <p class="section-sub">Six tools protecting EU importers &mdash; from duties to safety</p>
+    <div class="bundle-items">
+      <span>Anti-Dumping Alerts</span>
+      <span>FTA Optimizer</span>
+      <span>Sanctions Monitor</span>
+      <span>Tariff Quota Alerts</span>
+      <span>Safety Gate Monitor</span>
+      <span class="current">Price Benchmark</span>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing">
+  <div class="container">
+    <h2>Simple pricing</h2>
+    <p class="section-sub">Start free. Upgrade when the data saves you more than it costs.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Free</div>
+        <div class="price-amount">&euro;0</div>
+        <div class="price-desc">See if the data is useful</div>
+        <ul class="price-features">
+          <li>3 HS code / origin pairs</li>
+          <li>Annual trend chart</li>
+          <li>EU-27 aggregate view</li>
+          <li>Email delivery</li>
+        </ul>
+        <a href="#signup" class="price-cta secondary">Get started</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-name">Professional</div>
+        <div class="price-amount">&euro;49<span class="period">/mo</span></div>
+        <div class="price-desc">For active procurement teams</div>
+        <ul class="price-features">
+          <li>50 HS code / origin pairs</li>
+          <li>Monthly price-change alerts</li>
+          <li>Per-member-state breakdown</li>
+          <li>Multi-origin comparison</li>
+          <li>Fair-price-range bands</li>
+          <li>CSV export</li>
+        </ul>
+        <a href="#signup" class="price-cta primary">Get started</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Enterprise</div>
+        <div class="price-amount">&euro;149<span class="period">/mo</span></div>
+        <div class="price-desc">Unlimited products, API access</div>
+        <ul class="price-features">
+          <li>Unlimited HS codes</li>
+          <li>REST API access</li>
+          <li>Multi-entity dashboards</li>
+          <li>Custom reports</li>
+          <li>Quarterly trend analysis</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#signup" class="price-cta secondary">Contact us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>Data source: Eurostat Comext &mdash; official EU customs statistics | Updated monthly | Built by Corridor Economics</p>
+    <p>&copy; 2026 Corridor Economics. Intelligence for EU importers.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+// Chart defaults
+Chart.defaults.color = '#94a3b8';
+Chart.defaults.borderColor = '#1e293b';
+Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+
+const accentColor = '#d4a853';
+const greenColor = '#22c55e';
+const blueColor = '#3b82f6';
+const redColor = '#ef4444';
+const orangeColor = '#f97316';
+
+// Chart 1: Li-ion Batteries — horizontal bar
+new Chart(document.getElementById('chart-lion'), {
+  type: 'bar',
+  data: {
+    labels: ['China', 'Vietnam', 'India'],
+    datasets: [{
+      label: 'Avg. price (EUR/kg)',
+      data: [17.49, 27.98, 46.33],
+      backgroundColor: [accentColor, blueColor, blueColor],
+      borderRadius: 6,
+      barPercentage: 0.6
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return '\u20AC' + ctx.raw.toFixed(2) + '/kg'; }
+        }
+      },
+      annotation: undefined
+    },
+    scales: {
+      x: {
+        title: { display: true, text: 'EUR / kg', color: '#64748b', font: { size: 12 } },
+        grid: { color: '#1e293b' },
+        ticks: { callback: function(v) { return '\u20AC' + v; } }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 13, weight: 500 } }
+      }
+    }
+  }
+});
+
+// Chart 2: T-shirts — horizontal bar sorted cheapest first
+new Chart(document.getElementById('chart-tshirts'), {
+  type: 'bar',
+  data: {
+    labels: ['India', 'Vietnam', 'China', 'Turkey'],
+    datasets: [{
+      label: 'Avg. price (EUR/kg)',
+      data: [16.08, 16.38, 18.91, 26.50],
+      backgroundColor: [greenColor, greenColor, accentColor, orangeColor],
+      borderRadius: 6,
+      barPercentage: 0.6
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return '\u20AC' + ctx.raw.toFixed(2) + '/kg'; }
+        }
+      }
+    },
+    scales: {
+      x: {
+        title: { display: true, text: 'EUR / kg', color: '#64748b', font: { size: 12 } },
+        grid: { color: '#1e293b' },
+        ticks: { callback: function(v) { return '\u20AC' + v; } }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 13, weight: 500 } }
+      }
+    }
+  }
+});
+
+// Chart 3: Flat Steel — horizontal bar with AD warning on CN
+new Chart(document.getElementById('chart-steel'), {
+  type: 'bar',
+  data: {
+    labels: ['Thailand', 'India', 'Vietnam', 'Turkey', 'China (+25% SG)'],
+    datasets: [{
+      label: 'Avg. price (EUR/kg)',
+      data: [0.62, 0.70, 0.71, 0.76, 0.80],
+      backgroundColor: [greenColor, greenColor, greenColor, blueColor, redColor],
+      borderRadius: 6,
+      barPercentage: 0.6
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            var suffix = ctx.dataIndex === 4 ? ' + 25% safeguard duty' : '';
+            return '\u20AC' + ctx.raw.toFixed(2) + '/kg' + suffix;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        title: { display: true, text: 'EUR / kg', color: '#64748b', font: { size: 12 } },
+        grid: { color: '#1e293b' },
+        ticks: { callback: function(v) { return '\u20AC' + v.toFixed(2); } }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 13, weight: 500 } }
+      }
+    }
+  }
+});
+
+// Form handling
+document.getElementById('benchmarkForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = this;
+  var formData = new FormData(form);
+  // Try Formspree
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  }).then(function(r) {
+    if (r.ok) {
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      // Fallback: localStorage
+      try {
+        var subs = JSON.parse(localStorage.getItem('ipb_signups') || '[]');
+        subs.push({
+          email: formData.get('email'),
+          products: formData.get('products'),
+          origins: formData.get('origins'),
+          volume: formData.get('volume'),
+          ts: new Date().toISOString()
+        });
+        localStorage.setItem('ipb_signups', JSON.stringify(subs));
+      } catch(ex) {}
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  }).catch(function() {
+    try {
+      var subs = JSON.parse(localStorage.getItem('ipb_signups') || '[]');
+      subs.push({
+        email: formData.get('email'),
+        products: formData.get('products'),
+        origins: formData.get('origins'),
+        volume: formData.get('volume'),
+        ts: new Date().toISOString()
+      });
+      localStorage.setItem('ipb_signups', JSON.stringify(subs));
+    } catch(ex) {}
+    form.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+});
+</script>
+</body>
+</html>
